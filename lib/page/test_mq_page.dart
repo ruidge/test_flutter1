@@ -5,6 +5,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:test_flutter1/util/com_util.dart';
+import 'package:test_flutter1/util/extension_util.dart';
 
 class TestMqPage extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _TestMqState extends State<TestMqPage> {
   }
 
   String tickString() {
-    var time = formatDate(DateTime.now(), [HH, ':', nn, ':', ss]);
+    var time = formatDate(DateTime.now(), [HH, ':', nn, ':', ss, ':', SSS]);
     return '$_index   ${time}';
   }
 
@@ -60,9 +61,9 @@ class _TestMqState extends State<TestMqPage> {
   //compute调用的方法必须为库的顶层方法或者 static方法
   static String sleepWrap(String value) {
     var name = Isolate.current.debugName;
-    debugPrint('$name: sleepWrap start');
+    debugPrint('Isolate : $name: sleepWrap start : ${name.timestamp}');
     sleep(Duration(seconds: 5));
-    debugPrint('$name: sleepWrap end');
+    debugPrint('Isolate : $name: sleepWrap end : ${name.timestamp}');
     return 'complete:$value';
   }
 
@@ -71,7 +72,7 @@ class _TestMqState extends State<TestMqPage> {
     Future future = compute(sleepWrap, str);
     future.then((value) {
       var name = Isolate.current.debugName;
-      debugPrint('$name: then $value');
+      debugPrint('Isolate : $name: then $value : ${name.timestamp}');
     });
   }
 
