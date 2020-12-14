@@ -26,7 +26,7 @@ class FRouter {
               handlerFunc:
                   (BuildContext context, Map<String, List<String>> params) =>
                       value),
-          transitionType: TransitionType.inFromRight);
+          transitionType: TransitionType.none);
     });
   }
 }

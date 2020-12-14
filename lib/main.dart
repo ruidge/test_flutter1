@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_flutter1/page/home_page.dart';
 
+import 'routes/no_page_transition.dart';
 import 'routes/routers.dart';
 
 void main() {
@@ -26,6 +27,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        pageTransitionsTheme: NoPageTransition(),
       ),
       home: HomePage(),
     );
